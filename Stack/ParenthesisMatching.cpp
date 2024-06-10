@@ -6,13 +6,13 @@ using namespace std;
 // Declaring Node structure
 
 struct Node{
-    int data;
+    char data;
     struct Node *next;
 }*top = NULL;
 
 // Declaring Stack ADT functions
 
-void push(int x){
+void push(char x){
     struct Node *t = new Node;
 
     if (t == NULL)
@@ -25,8 +25,8 @@ void push(int x){
     }
 }
 
-int pop(){
-    int x = -1;
+char pop(){
+    char x = -1;
     struct Node *t;
 
     if (top == NULL)
@@ -54,22 +54,32 @@ void Display(){
     cout << endl;
 }
 
+// Function to check if the parenthesis set are valid or not
+
+bool isBalanced(char *exp){
+    for (int i = 0; exp[i] != '\0'; i++){
+        if (exp[i] == '(')
+            push(exp[i]);
+
+        else if (exp[i] == ')'){
+            if (top == NULL)
+                return 0;
+            pop();
+        }
+    }
+
+    if (top == NULL)
+        return true;
+
+    return false;
+}
+
 // Main Function
 
 int main(){
-    push(10);
-    push(20);
-    push(30);
+    char *exp = "((a+b)*(c-d))";
 
-    Display();
-
-    cout << "pop(): " << pop() << endl;
-    
-    Display();
-    
-    cout << "pop(): " << pop() << endl;
-    
-    Display();
+    cout << isBalanced(exp) << endl;
 
     return 0;
 }
