@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -53,22 +54,36 @@ void Display(){
     cout << endl;
 }
 
-// Main Function
+// Functions to check character precedence
+
+int isOperand(char x){
+    if (x == '+' || x == '-' || x == '*' || x == '/')
+        return 0;
+    return 1;
+}
+
+int precedence(char x){
+    if (x == '*' || x == '/')
+        return 2;
+    else if (x == '+' || x == '-')
+        return 1;
+    return 0;
+}
+
+// Function to convert Infix to Postfix
+
+int evaluate(char *postfix){
+    int x1, x2, r;
+
+    for(int i = 0; postfix[i] != '\0'; i++){
+        
+    }
+}
+
+// Main Function        
 
 int main(){
-    push(10);
-    push(20);
-    push(30);
-
-    Display();
-
-    cout << "pop(): " << pop() << endl;
-    
-    Display();
-    
-    cout << "pop(): " << pop() << endl;
-    
-    Display();
+    char *postfix = "234*+82/-";
 
     return 0;
 }

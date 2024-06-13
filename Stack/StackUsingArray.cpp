@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stdlib.h>
 
 using namespace std;
 
@@ -72,7 +71,7 @@ int isFull(Stack st){
 }
 
 void Display(Stack st){
-    for (int i = st.top; i >= 0; i++)
+    for (int i = st.top; i >= 0; i--)
         cout << st.s[i] << " ";
     
     cout << endl;
